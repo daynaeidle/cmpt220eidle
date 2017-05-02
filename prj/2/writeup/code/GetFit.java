@@ -204,20 +204,21 @@ public class GetFit extends JPanel{
     g.drawString("~ Please enter your information in the terminal window ~ ", 75, 100);
     
     g.setFont(new Font("Arial", Font.PLAIN, 20));
-    g.drawString("You daily caloric intake should be: ", 20, 200);
+    g.drawString("Your daily caloric intake should be: ", 20, 200);
     
     //new font
     g.setFont(new Font("Serif", Font.BOLD,90));
     g.setColor(Color.red);
     
     if (counter){
-      g.drawString(String.valueOf(rmr), 200, 400);
+      g.drawString(String.valueOf(rmr), 200, 350);
       g.setFont(new Font("Serif", Font.BOLD, 30));
       g.setColor(Color.BLACK);
-      g.drawString(name + " - You are currently " + BMI, 50, 500);
+      g.drawString(name + " - You are currently: ", 20, 500);
+      g.drawString(BMI, 20, 540);
       g.setFont(new Font("Arial", Font.BOLD, 20));
       g.setColor(Color.BLACK);
-      g.drawString("<< Hit ENTER to exit program >>", 200, 600);
+      g.drawString("<< Hit ENTER to exit program >>", 200, 650);
     }
   }
 }
