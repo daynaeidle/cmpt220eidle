@@ -5,6 +5,10 @@
 * Assignment: Semester Project
 * Due Date: 5/10/2017
 * Version: 1.8
+* 
+* This program calculates the user's projected daily caloric intake
+* and current weight status based on their height, weight, age, gender,
+* activity level, and desired weight outcome
 */
 
 import javax.swing.JTextField;
@@ -25,12 +29,12 @@ public class GetFit extends JPanel{
   public static String BMI = "";
   public static String name = "";
   
-  //main
+  //MAIN METHOD BEGINS HERE
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
     JFrame frame = new JFrame("GetFit");
     
-    //frame properties
+    //these are the frame properties for the JFrame window
     frame.getContentPane().add(new GetFit());
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(700, 700);
@@ -42,7 +46,6 @@ public class GetFit extends JPanel{
 
     //variables
       //Strings
-    //String name = "";
     String gender;
     String action;
     String activity;
@@ -53,38 +56,37 @@ public class GetFit extends JPanel{
       //doubles
     double height;
     double currWeight;
-    //double rmr = 0; //resting metabolic rate
     double goalWeight;
     
     System.out.println("~~~~~~~~~~~~~~~Welcome to GetFit!~~~~~~~~~~~~~~~");
     
     System.out.println("Please fill out the following information: ");
     
-    //name
+    //user inputs name here
     System.out.print("Name: ");
     name = input.nextLine();
     
-    //age
+    //user inputs age here
     System.out.print("Age: ");
     age = input.nextInt();
     
     input.nextLine();
     
-    //gender
+    //user inputs gender here
     System.out.print("Gender (m/f): ");
     gender = input.nextLine();
     gender = gender.toLowerCase();
     
-    //height
+    //user inputs height here
     System.out.print("Height (in inches): ");
     height = input.nextDouble();
       //convert to cm
     height = height * 2.54;
     
-    //current weight
+    //user inputs current weight here
     System.out.print("Current weight: ");
     currWeight = input.nextDouble();
-      //convert to kg
+      //converts weight to kg
     currWeight = currWeight * .453592;
     
     //calc rmr for gender
@@ -97,7 +99,7 @@ public class GetFit extends JPanel{
     input.nextLine();
     System.out.println();
     
-    //activity
+    //this is where the user inputs their activity level
     System.out.println("How active are you on a day-to-day basis?");
     System.out.println("A) Not active at all");
     System.out.println("B) Somewhat active (ex. take light walks)");
@@ -114,10 +116,11 @@ public class GetFit extends JPanel{
       rmr = rmr + 500;
     }else{
       rmr = rmr + 600;
-      }
+    }
     
     System.out.println();
       
+    //this is where the user inputs what they want to do with their weight
     System.out.println("Enter in the letter of what you would like to do");
     System.out.println("A) Lose weight");
     System.out.println("B) Stay the same");
@@ -139,10 +142,8 @@ public class GetFit extends JPanel{
     BMI = calcBMI(currWeight, height);
     
     
+    //this repaints the jframe so the calorie count and weight status show up
     if (counter){
-      label.setText(String.valueOf(rmr));
-      frame.add(label);
-      //label.setVisible(true);
       frame.revalidate();
       frame.repaint();
     }
@@ -151,21 +152,22 @@ public class GetFit extends JPanel{
     System.exit(0);
   }
   
-//OUT OF MAIN
+//OUT OF MAIN METHOD
 
-  //male RMR
+  //calculates male RMR
   public static double calcMaleRMR(double currWeight, double height, int age){
     double rmr = (currWeight * 10.0) + (height * 6.25) - (age * 5) + 5;  
     System.out.println(rmr);
     return rmr;
   }
   
-  //female RMR
+  //calculates female RMR
   public static double calcFemaleRMR(double currWeight, double height, int age){
     double rmr = (currWeight * 10.0) + (height * 6.25) - (age * 5) - 161;
     return rmr;
   }
   
+  //calculates BMI
   public static String calcBMI(double currWeight, double height){
     double kg = currWeight;
     double meter = height * .01;
@@ -184,7 +186,7 @@ public class GetFit extends JPanel{
     }
   }
   
-  //paint
+  //draws graphical window and text on it
   public void paint(Graphics g){
   
     JTextField input = new JTextField(15);
